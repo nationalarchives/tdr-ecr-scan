@@ -34,7 +34,7 @@ object ImageUtils {
 
   implicit class ImageScanUtils(utils: List[StartImageScanResponse]) {
     def toByteArray(): Array[Byte] = {
-      utils.map(_.imageScanStatus().statusAsString()).mkString("\n").getBytes(Charset.defaultCharset())
+      utils.map(u => s"${u.repositoryName} ${u.imageId.imageTag}").mkString("\n").getBytes(Charset.defaultCharset())
     }
   }
 }

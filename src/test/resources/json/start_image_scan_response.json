@@ -1,7 +1,7 @@
 {
   "imageId": {
     "imageDigest": "string",
-    "imageTag": "string"
+    "imageTag": "latest"
   },
   "imageScanStatus": {
     "description": "string",

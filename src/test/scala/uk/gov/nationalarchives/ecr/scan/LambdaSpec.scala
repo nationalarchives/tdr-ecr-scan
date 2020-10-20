@@ -70,7 +70,7 @@ class LambdaSpec extends AnyFlatSpec with Matchers with MockitoSugar with Before
     doNothing.when(stream).write(captor.capture())
     new Lambda().process(null, stream)
     val output: String = captor.getAllValues.get(0).map(_.toChar).mkString
-    output should equal(s"$repositoryName-status")
+    output should equal(s"$repositoryName latest")
   }
 
   "the process method" should "return the correct status for a multiple repositories" in {
@@ -85,7 +85,7 @@ class LambdaSpec extends AnyFlatSpec with Matchers with MockitoSugar with Before
     doNothing.when(stream).write(captor.capture())
     new Lambda().process(null, stream)
     val output: String = captor.getAllValues.get(0).map(_.toChar).mkString
-    output should equal(repositoryNames.map(name => s"$name-status").mkString("\n"))
+    output should equal(repositoryNames.map(name => s"$name latest").mkString("\n"))
   }
 
   "the process method" should "return the correct status when one image scan fails" in {
@@ -99,6 +99,6 @@ class LambdaSpec extends AnyFlatSpec with Matchers with MockitoSugar with Before
     doNothing.when(stream).write(captor.capture())
     new Lambda().process(null, stream)
     val output: String = captor.getAllValues.get(0).map(_.toChar).mkString
-    output should equal(repositoryNames.tail.map(name => s"$name-status").mkString("\n"))
+    output should equal(repositoryNames.tail.map(name => s"$name latest").mkString("\n"))
   }
 }
