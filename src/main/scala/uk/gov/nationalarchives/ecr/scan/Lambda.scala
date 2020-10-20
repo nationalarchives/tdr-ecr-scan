@@ -20,8 +20,8 @@ class Lambda() {
     } yield {
       val (failed, succeeded) = scans.partitionMap(identity)
       output.write(succeeded.toByteArray())
+      succeeded.foreach(s => logger.info(s.imageScanStatus().statusAsString()))
       failed.foreach(err => logger.error(err)(err.getMessage))
-      failed.throwIfErrors()
     }
   }.unsafeRunSync()
 }

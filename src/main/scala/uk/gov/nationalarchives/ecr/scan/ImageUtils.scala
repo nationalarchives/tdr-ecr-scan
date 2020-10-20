@@ -37,10 +37,4 @@ object ImageUtils {
       utils.map(_.imageScanStatus().statusAsString()).mkString("\n").getBytes(Charset.defaultCharset())
     }
   }
-
-  implicit class ExceptionUtils(errors: List[Throwable]) {
-    def throwIfErrors(): Unit = {
-      if(errors.nonEmpty) throw new RuntimeException(errors.map(_.getMessage).mkString("\n"))
-    }
-  }
 }
