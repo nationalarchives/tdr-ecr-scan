@@ -97,24 +97,8 @@ class LambdaSpec extends AnyFlatSpec with Matchers with MockitoSugar with Before
     val stream = mock[ByteArrayOutputStream]
     val captor: ArgumentCaptor[Array[Byte]] = ArgumentCaptor.forClass(classOf[Array[Byte]])
     doNothing.when(stream).write(captor.capture())
-    intercept[RuntimeException] {
-      new Lambda().process(null, stream)
-    }
+    new Lambda().process(null, stream)
     val output: String = captor.getAllValues.get(0).map(_.toChar).mkString
     output should equal(repositoryNames.tail.map(name => s"$name-status").mkString("\n"))
-  }
-
-  "the process method" should "throw an exception when there are errors" in {
-    val repositoryNames = List("repository1of4","repository2of4","repository3of4","repository4of4")
-    stubDescribeRepositoriesResponse("describe_repositories_four_repos")
-    repositoryNames.foreach(stubDescribeImageResponse)
-    repositoryNames.tail.foreach(stubStartImageScanResponse)
-    stubFailedImageScanResponse(repositoryNames.head)
-    val stream = mock[ByteArrayOutputStream]
-    doNothing.when(stream).write(any[Array[Byte]])
-    val error = intercept[RuntimeException] {
-      new Lambda().process(null, stream)
-    }
-    error.getMessage should be("null (Service: Ecr, Status Code: 400, Request ID: null, Extended Request ID: null)")
   }
 }
