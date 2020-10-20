@@ -26,5 +26,10 @@ resolvers ++= Seq[Resolver](
 
 assemblyJarName in assembly := "ecr-scan.jar"
 
+assemblyMergeStrategy in assembly := {
+  case PathList("META-INF", xs@_*) => MergeStrategy.discard
+  case _ => MergeStrategy.first
+}
+
 fork in Test := true
 javaOptions in Test += s"-Dconfig.file=${sourceDirectory.value}/test/resources/application.conf"
