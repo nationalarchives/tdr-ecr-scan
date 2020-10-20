@@ -1,0 +1,12 @@
+{
+  "imageId": {
+    "imageDigest": "string",
+    "imageTag": "string"
+  },
+  "imageScanStatus": {
+    "description": "string",
+    "status": "$repositoryName-status"
+  },
+  "registryId": "string",
+  "repositoryName": "$repositoryName"
+}

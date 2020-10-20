@@ -1,0 +1,26 @@
+{
+  "imageDetails": [
+    {
+      "artifactMediaType": "string",
+      "imageDigest": "$repositoryName-digest",
+      "imageManifestMediaType": "string",
+      "imagePushedAt": 1,
+      "imageScanFindingsSummary": {
+        "findingSeverityCounts": {
+          "string" : 1
+        },
+        "imageScanCompletedAt": 1,
+        "vulnerabilitySourceUpdatedAt": 1
+      },
+      "imageScanStatus": {
+        "description": "string",
+        "status": "string"
+      },
+      "imageSizeInBytes": 1,
+      "imageTags": [ "$repositoryName-latest" ],
+      "registryId": "string",
+      "repositoryName": "$repositoryName"
+    }
+  ],
+  "nextToken": "string"
+}

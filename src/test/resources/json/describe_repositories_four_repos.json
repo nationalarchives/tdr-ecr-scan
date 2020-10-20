@@ -1,0 +1,65 @@
+{
+  "nextToken": "atoken",
+  "repositories": [
+    {
+      "createdAt": 1,
+      "encryptionConfiguration": {
+        "encryptionType": "type",
+        "kmsKey": "akey"
+      },
+      "imageScanningConfiguration": {
+        "scanOnPush": true
+      },
+      "imageTagMutability": "enabled",
+      "registryId": "testregistry",
+      "repositoryArn": "arn::testregistry",
+      "repositoryName": "repository1of4",
+      "repositoryUri": "https://repository1of4"
+    },
+    {
+      "createdAt": 1,
+      "encryptionConfiguration": {
+        "encryptionType": "type",
+        "kmsKey": "akey"
+      },
+      "imageScanningConfiguration": {
+        "scanOnPush": true
+      },
+      "imageTagMutability": "enabled",
+      "registryId": "testregistry",
+      "repositoryArn": "arn::testregistry",
+      "repositoryName": "repository2of4",
+      "repositoryUri": "https://repository2of4"
+    },
+    {
+      "createdAt": 1,
+      "encryptionConfiguration": {
+        "encryptionType": "type",
+        "kmsKey": "akey"
+      },
+      "imageScanningConfiguration": {
+        "scanOnPush": true
+      },
+      "imageTagMutability": "enabled",
+      "registryId": "testregistry",
+      "repositoryArn": "arn::testregistry",
+      "repositoryName": "repository3of4",
+      "repositoryUri": "https://repository3of4"
+    },
+    {
+      "createdAt": 1,
+      "encryptionConfiguration": {
+        "encryptionType": "type",
+        "kmsKey": "akey"
+      },
+      "imageScanningConfiguration": {
+        "scanOnPush": true
+      },
+      "imageTagMutability": "enabled",
+      "registryId": "testregistry",
+      "repositoryArn": "arn::testregistry",
+      "repositoryName": "repository4of4",
+      "repositoryUri": "https://repository4of4"
+    }
+  ]
+}
