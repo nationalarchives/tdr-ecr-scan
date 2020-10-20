@@ -14,6 +14,7 @@ lazy val root = (project in file("."))
       catsEffect,
       log4cats,
       log4catsSlf4j,
+      slf4j,
       mockito % Test,
       wiremock % Test,
       scalaTest % Test

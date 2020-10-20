@@ -1,12 +1,11 @@
 package uk.gov.nationalarchives.ecr.scan
 
 import java.io.{InputStream, OutputStream}
-import java.nio.charset.Charset
 
 import cats.effect.IO
 import cats.implicits._
-import ImageUtils._
 import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
+import uk.gov.nationalarchives.ecr.scan.ImageUtils._
 
 class Lambda() {
 
@@ -17,11 +16,10 @@ class Lambda() {
       repositories <- utils.listRepositories
       images <- utils.describeImages(repositories)
       scans <- utils.scanImage(images).map(_.attempt).sequence
-    } yield {
-      val (failed, succeeded) = scans.partitionMap(identity)
-      output.write(succeeded.toByteArray())
-      succeeded.foreach(s => logger.info(s.imageScanStatus().statusAsString()))
-      failed.foreach(err => logger.error(err)(err.getMessage))
-    }
+      scanMap <- IO(scans.partitionMap(identity))
+      (failure, success) = scanMap
+      _ <-  IO(output.write(success.toByteArray()))
+      _ <- failure.distinct.map(err => logger.error(err)(err.getMessage)).sequence
+    } yield ()
   }.unsafeRunSync()
 }
