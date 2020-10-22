@@ -1,0 +1,20 @@
+{
+  "nextToken": "string",
+  "repositories": [
+    {
+      "createdAt": 1,
+      "encryptionConfiguration": {
+        "encryptionType": "type",
+        "kmsKey": "akey"
+      },
+      "imageScanningConfiguration": {
+        "scanOnPush": true
+      },
+      "imageTagMutability": "enabled",
+      "registryId": "testregistry",
+      "repositoryArn": "arn::testregistry",
+      "repositoryName": "repository1of1",
+      "repositoryUri": "https://repository1of1"
+    }
+  ]
+}
