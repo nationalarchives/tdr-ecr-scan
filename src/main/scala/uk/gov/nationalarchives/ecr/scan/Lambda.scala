@@ -2,7 +2,6 @@ package uk.gov.nationalarchives.ecr.scan
 
 import java.io.{InputStream, OutputStream}
 
-import cats.data.{EitherT, OptionT}
 import cats.effect.IO
 import cats.implicits._
 import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
