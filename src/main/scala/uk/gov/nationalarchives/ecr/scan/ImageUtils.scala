@@ -1,9 +1,11 @@
 package uk.gov.nationalarchives.ecr.scan
 
+import java.net.URI
 import java.nio.charset.Charset
 
 import cats.effect.IO
 import cats.implicits._
+import com.typesafe.config.ConfigFactory
 import software.amazon.awssdk.services.ecr.model.{DescribeImagesResponse, DescribeRepositoriesResponse, StartImageScanResponse}
 import uk.gov.nationalarchives.aws.utils.Clients.ecr
 import uk.gov.nationalarchives.aws.utils.ECRUtils
@@ -12,7 +14,8 @@ import uk.gov.nationalarchives.aws.utils.ECRUtils.EcrImage
 import scala.jdk.CollectionConverters._
 
 class ImageUtils() {
-  val utils: ECRUtils = ECRUtils(ecr)
+  private val ecrClient = ecr(URI.create(ConfigFactory.load.getString("ecr.endpoint")))
+  val utils: ECRUtils = ECRUtils(ecrClient)
 
   def listRepositories: IO[DescribeRepositoriesResponse] = utils.listRepositories()
 
