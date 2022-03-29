@@ -2,7 +2,7 @@ import Dependencies._
 import com.amazonaws.auth.{AWSCredentialsProviderChain, DefaultAWSCredentialsProviderChain}
 import com.amazonaws.auth.profile.ProfileCredentialsProvider
 
-ThisBuild / scalaVersion     := "2.13.3"
+ThisBuild / scalaVersion     := "2.13.8"
 ThisBuild / version          := "0.1.0-SNAPSHOT"
 ThisBuild / organization     := "uk.gov.nationalarchives.ecr.scan"
 
@@ -25,12 +25,12 @@ resolvers ++= Seq[Resolver](
   "TDR Releases" at "s3://tdr-releases-mgmt"
 )
 
-assemblyJarName in assembly := "ecr-scan.jar"
+(assembly / assemblyJarName) := "ecr-scan.jar"
 
-assemblyMergeStrategy in assembly := {
+(assembly / assemblyMergeStrategy) := {
   case PathList("META-INF", xs@_*) => MergeStrategy.discard
   case _ => MergeStrategy.first
 }
 
-fork in Test := true
-javaOptions in Test += s"-Dconfig.file=${sourceDirectory.value}/test/resources/application.conf"
+(Test / fork) := true
+(Test / javaOptions) += s"-Dconfig.file=${sourceDirectory.value}/test/resources/application.conf"
