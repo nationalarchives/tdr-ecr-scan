@@ -4,8 +4,9 @@ import java.io.{InputStream, OutputStream}
 
 import cats.effect.IO
 import cats.implicits._
-import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
+import org.typelevel.log4cats.slf4j.Slf4jLogger
 import uk.gov.nationalarchives.ecr.scan.ImageUtils._
+import cats.effect.unsafe.implicits.global
 
 class Lambda() {
 
