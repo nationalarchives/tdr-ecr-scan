@@ -5,7 +5,8 @@ on:
       to-deploy:
         description: 'Version to deploy'
         required: true
-
+permissions:
+  id-token: write
 jobs:
   deploy:
     runs-on: ubuntu-latest
