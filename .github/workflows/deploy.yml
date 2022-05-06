@@ -1,6 +1,5 @@
 name: TDR Deploy ECR Scan Lambda
 on:
-  push:
   workflow_dispatch:
     inputs:
       to-deploy:
@@ -13,7 +12,7 @@ jobs:
     environment: mgmt
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Configure AWS credentials for Lambda
         uses: aws-actions/configure-aws-credentials@v1
         with:
