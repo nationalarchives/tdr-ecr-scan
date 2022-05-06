@@ -1,0 +1,41 @@
+name: TDR Deploy ECR Scan Lambda
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      to-deploy:
+        description: 'Version to deploy'
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: mgmt
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Configure AWS credentials for Lambda
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.MANAGEMENT_ACCOUNT }}:role/TDRGithubLambdaRoleMgmt
+          aws-region: eu-west-2
+          role-session-name: ECRLogin
+      - name: Deploy to lambda
+        run: |
+          aws lambda update-function-code --function-name tdr-ecr-scan-mgmt --s3-bucket tdr-backend-code-mgmt --s3-key ${{ github.event.inputs.to-deploy }}/ecr-scan.jar > /dev/null
+          aws lambda wait function-updated --function-name tdr-ecr-scan-mgmt > /dev/null
+      - name: Send success message
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@main
+        with:
+          message: ":white_check_mark: Service tdr-ecr-scan updated to version ${{ github.event.inputs.to-deploy }} in mgmt"
+          slack-url: ${{ secrets.SLACK_WEBHOOK }}
+      - name: Update release branch
+        run: |
+          git branch -f release-mgmt HEAD
+          git push -f origin release-mgmt
+      - name: Send failure message
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@main
+        if: failure()
+        with:
+          message: ":warning: Build failed for tdr-ecr-scan for version ${{ github.event.inputs.to-deploy }}"
+          slack-url: ${{ secrets.SLACK_WEBHOOK }}
