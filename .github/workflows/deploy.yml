@@ -19,7 +19,7 @@ jobs:
       - name: Configure AWS credentials for Lambda
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::${{ secrets.MANAGEMENT_ACCOUNT }}:role/TDRGithubLambdaRoleMgmt
+          role-to-assume: arn:aws:iam::${{ secrets.MANAGEMENT_ACCOUNT }}:role/TDRGithubActionsDeployLambdaMgmt
           aws-region: eu-west-2
           role-session-name: ECRLogin
       - name: Deploy to lambda
