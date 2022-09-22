@@ -2,7 +2,7 @@ import Dependencies._
 import com.amazonaws.auth.{AWSCredentialsProviderChain, DefaultAWSCredentialsProviderChain}
 import com.amazonaws.auth.profile.ProfileCredentialsProvider
 
-ThisBuild / scalaVersion     := "2.13.8"
+ThisBuild / scalaVersion     := "2.13.9"
 ThisBuild / version          := "0.1.0-SNAPSHOT"
 ThisBuild / organization     := "uk.gov.nationalarchives.ecr.scan"
 
