@@ -3,7 +3,7 @@ import sbt._
 object Dependencies {
   lazy val awsUtils =  "uk.gov.nationalarchives" %% "tdr-aws-utils" % "0.1.38"
   lazy val catsEffect = "org.typelevel" %% "cats-effect" % "3.3.14"
-  lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.2.13"
+  lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.2.14"
   lazy val wiremock = "com.github.tomakehurst" % "wiremock" % "2.27.2"
   lazy val mockito = "org.mockito" %% "mockito-scala" % "1.17.12"
   lazy val log4cats = "org.typelevel" %% "log4cats-core"    % "2.5.0"
