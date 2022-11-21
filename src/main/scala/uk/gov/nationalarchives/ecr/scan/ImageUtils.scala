@@ -7,7 +7,7 @@ import cats.effect.IO
 import cats.implicits._
 import com.typesafe.config.ConfigFactory
 import software.amazon.awssdk.services.ecr.model.{DescribeImagesResponse, DescribeRepositoriesResponse, StartImageScanResponse}
-import uk.gov.nationalarchives.aws.utils.Clients.ecr
+import uk.gov.nationalarchives.aws.utils.ecr.ECRClients.ecr
 import uk.gov.nationalarchives.aws.utils.ECRUtils
 import uk.gov.nationalarchives.aws.utils.ECRUtils.EcrImage
 
