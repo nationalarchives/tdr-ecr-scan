@@ -10,11 +10,12 @@ lazy val root = (project in file("."))
   .settings(
     name := "tdr-ecr-scan",
     libraryDependencies ++= Seq(
-      awsUtils,
+      ecrUtils,
       catsEffect,
       log4cats,
       log4catsSlf4j,
       slf4j,
+      typesafe,
       mockito % Test,
       wiremock % Test,
       scalaTest % Test
