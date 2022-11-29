@@ -8,8 +8,8 @@ import cats.implicits._
 import com.typesafe.config.ConfigFactory
 import software.amazon.awssdk.services.ecr.model.{DescribeImagesResponse, DescribeRepositoriesResponse, StartImageScanResponse}
 import uk.gov.nationalarchives.aws.utils.ecr.ECRClients.ecr
-import uk.gov.nationalarchives.aws.utils.ECRUtils
-import uk.gov.nationalarchives.aws.utils.ECRUtils.EcrImage
+import uk.gov.nationalarchives.aws.utils.ecr.ECRUtils
+import uk.gov.nationalarchives.aws.utils.ecr.ECRUtils.EcrImage
 
 import scala.jdk.CollectionConverters._
 
