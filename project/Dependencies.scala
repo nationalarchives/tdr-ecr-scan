@@ -1,7 +1,7 @@
 import sbt._
 
 object Dependencies {
-  lazy val ecrUtils =  "uk.gov.nationalarchives" %% "ecr-utils" % "0.1.73"
+  lazy val ecrUtils =  "uk.gov.nationalarchives" %% "ecr-utils" % "0.1.74"
   lazy val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.7"
   lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.2.15"
   lazy val wiremock = "com.github.tomakehurst" % "wiremock" % "2.27.2"
