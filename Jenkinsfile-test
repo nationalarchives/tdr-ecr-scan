@@ -1,7 +1,0 @@
-library("tdr-jenkinslib")
-
-lambdaTests(
-  stage: "mgmt",
-  libraryName: "ecr-scan",
-  deployJobName: "TDR ECR Scan Deploy"
-)
