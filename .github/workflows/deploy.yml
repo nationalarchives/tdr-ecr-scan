@@ -5,6 +5,7 @@ on:
       to-deploy:
         description: 'Version to deploy'
         required: true
+run-name: Deploying ECR Scan Lambda ${{inputs.to-deploy}} to mgmt
 permissions:
   id-token: write
   pull-requests: write
