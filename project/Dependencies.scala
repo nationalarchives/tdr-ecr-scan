@@ -4,7 +4,7 @@ object Dependencies {
 
   lazy val ecrUtils =  "uk.gov.nationalarchives" %% "ecr-utils" % "0.1.187"
   lazy val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.4"
-  lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.2.18"
+  lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.2.19"
   lazy val wiremock = "com.github.tomakehurst" % "wiremock" % "3.0.1"
   lazy val mockito = "org.mockito" %% "mockito-scala" % "1.17.37"
   lazy val log4cats = "org.typelevel" %% "log4cats-core"    % "2.7.0"
