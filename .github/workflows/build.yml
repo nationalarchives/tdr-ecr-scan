@@ -5,8 +5,9 @@ on:
       - master
 jobs:
   pre-deploy:
-    uses: nationalarchives/tdr-github-actions/.github/workflows/lambda_build.yml@main
+    uses: nationalarchives/tdr-github-actions/.github/workflows/lambda_build.yml@new-lambda-s3-structure
     with:
+      lambda-name: ecr-scan
       repo-name: tdr-ecr-scan
       artifact-name: ecr-scan
       build-command: |
@@ -19,6 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: gh workflow run deploy.yml -f to-deploy=${{ needs.pre-deploy.outputs.next-version }}
+      - run: gh workflow run deploy.yml --ref TDRD-666 -f to-deploy=${{ needs.pre-deploy.outputs.next-version }}
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}
