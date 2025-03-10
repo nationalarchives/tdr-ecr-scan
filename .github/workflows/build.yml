@@ -7,6 +7,7 @@ jobs:
   pre-deploy:
     uses: nationalarchives/tdr-github-actions/.github/workflows/lambda_build.yml@main
     with:
+      lambda-name: ecr-scan
       repo-name: tdr-ecr-scan
       artifact-name: ecr-scan
       build-command: |
