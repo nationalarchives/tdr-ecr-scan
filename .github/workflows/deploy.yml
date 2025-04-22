@@ -25,7 +25,7 @@ jobs:
           role-session-name: ECRLogin
       - name: Deploy to lambda
         run: |
-          aws lambda update-function-code --function-name tdr-ecr-scan-mgmt --s3-bucket tdr-backend-code-mgmt --s3-key ${{ github.event.inputs.to-deploy }}/ecr-scan.jar > /dev/null
+          aws lambda update-function-code --function-name tdr-ecr-scan-mgmt --s3-bucket tdr-backend-code-mgmt --s3-key ecr-scan/${{ github.event.inputs.to-deploy }}/ecr-scan.jar > /dev/null
           aws lambda wait function-updated --function-name tdr-ecr-scan-mgmt > /dev/null
       - name: Send success message
         uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@main
