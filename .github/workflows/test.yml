@@ -11,8 +11,9 @@ permissions:
 jobs:
   test:
     uses: nationalarchives/tdr-github-actions/.github/workflows/tdr_test.yml@5d4fee21ed08f053613a7706e28623c0adc0f5f4 # v.0.0.10
-      repo-name: tdr-ecr-scan
-      test-command: |
-        sbt test
+    with:
+        repo-name: tdr-ecr-scan
+        test-command: |
+          sbt test
     secrets:
       SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
