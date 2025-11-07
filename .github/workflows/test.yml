@@ -10,8 +10,7 @@ permissions:
   contents: write
 jobs:
   test:
-    uses: nationalarchives/tdr-github-actions/.github/workflows/tdr_test.yml@fa53af529582c850a4575b9af2f91e441166c68d # v0.0.7
-    with:
+    uses: nationalarchives/tdr-github-actions/.github/workflows/tdr_test.yml@5d4fee21ed08f053613a7706e28623c0adc0f5f4 # v.0.0.10
       repo-name: tdr-ecr-scan
       test-command: |
         sbt test
