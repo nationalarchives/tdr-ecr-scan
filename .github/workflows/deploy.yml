@@ -16,7 +16,7 @@ jobs:
     environment: mgmt
     steps:
       - name: Checkout
-        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       - name: Configure AWS credentials for Lambda
         uses: aws-actions/configure-aws-credentials@61815dcd50bd041e203e49132bacad1fd04d2708 # v5.1.1
         with:
@@ -28,7 +28,7 @@ jobs:
           aws lambda update-function-code --function-name tdr-ecr-scan-mgmt --s3-bucket tdr-backend-code-mgmt --s3-key ecr-scan/${{ github.event.inputs.to-deploy }}/ecr-scan.jar > /dev/null
           aws lambda wait function-updated --function-name tdr-ecr-scan-mgmt > /dev/null
       - name: Send success message
-        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@5d4fee21ed08f053613a7706e28623c0adc0f5f4 # v0.0.10
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@f52edf22c81f568202369a3b31da0277541b0507 # v0.0.11
         with:
           message: ":white_check_mark: Service tdr-ecr-scan updated to version ${{ github.event.inputs.to-deploy }} in mgmt"
           slack-url: ${{ secrets.SLACK_WEBHOOK }}
@@ -39,7 +39,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}
       - name: Send failure message
-        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@5d4fee21ed08f053613a7706e28623c0adc0f5f4 # v0.0.10
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@f52edf22c81f568202369a3b31da0277541b0507 # v0.0.11
         if: failure()
         with:
           message: ":warning: Build failed for tdr-ecr-scan for version ${{ github.event.inputs.to-deploy }}"
