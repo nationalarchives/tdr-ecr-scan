@@ -28,7 +28,7 @@ jobs:
           aws lambda update-function-code --function-name tdr-ecr-scan-mgmt --s3-bucket tdr-backend-code-mgmt --s3-key ecr-scan/${{ github.event.inputs.to-deploy }}/ecr-scan.jar > /dev/null
           aws lambda wait function-updated --function-name tdr-ecr-scan-mgmt > /dev/null
       - name: Send success message
-        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@f52edf22c81f568202369a3b31da0277541b0507 # v0.0.11
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@cd362ffa9386c007c816bfd15a25b6f0a3c3b3d6 # v0.0.14
         with:
           message: ":white_check_mark: Service tdr-ecr-scan updated to version ${{ github.event.inputs.to-deploy }} in mgmt"
           slack-url: ${{ secrets.SLACK_WEBHOOK }}
@@ -39,7 +39,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}
       - name: Send failure message
-        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@f52edf22c81f568202369a3b31da0277541b0507 # v0.0.11
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@cd362ffa9386c007c816bfd15a25b6f0a3c3b3d6 # v0.0.14
         if: failure()
         with:
           message: ":warning: Build failed for tdr-ecr-scan for version ${{ github.event.inputs.to-deploy }}"
