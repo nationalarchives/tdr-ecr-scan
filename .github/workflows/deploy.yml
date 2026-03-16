@@ -25,7 +25,7 @@ jobs:
           role-session-name: ECRLogin
       - name: Deploy to lambda
         run: |
-          aws lambda update-function-code --function-name tdr-ecr-scan-mgmt --s3-bucket tdr-backend-code-mgmt --s3-key "ecr-scan/${DEPLOY_VERSION}/ecr-scan.jar" > /dev/null
+          aws lambda update-function-code --function-name tdr-ecr-scan-mgmt --s3-bucket tdr-backend-code-mgmt --s3-key "ecr-scan/${DEPLOY_VERSION}/ecr-scan.jar" --output text --query 'FunctionName'
           aws lambda wait function-updated --function-name tdr-ecr-scan-mgmt > /dev/null
         env:
           DEPLOY_VERSION: ${{ github.event.inputs.to-deploy }}
