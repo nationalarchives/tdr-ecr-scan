@@ -32,7 +32,7 @@ jobs:
         env:
           DEPLOY_VERSION: ${{ github.event.inputs.to-deploy }}
       - name: Send success message
-        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@298f5c5b84f1693c6db398db8231c8f1b903ad97 # v0.0.30
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@9214d929d74b527c75cdac14ba96812f90b3ebba # v0.0.35
         with:
           message: ":white_check_mark: Service tdr-ecr-scan updated to version ${{ github.event.inputs.to-deploy }} in mgmt"
           slack-url: ${{ secrets.SLACK_WEBHOOK }}
@@ -43,7 +43,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}
       - name: Send failure message
-        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@298f5c5b84f1693c6db398db8231c8f1b903ad97 # v0.0.30
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@9214d929d74b527c75cdac14ba96812f90b3ebba # v0.0.35
         if: failure()
         with:
           message: ":warning: Build failed for tdr-ecr-scan for version ${{ github.event.inputs.to-deploy }}"
