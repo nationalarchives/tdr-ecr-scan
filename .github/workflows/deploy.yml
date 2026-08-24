@@ -38,6 +38,7 @@ jobs:
           slack-url: ${{ secrets.SLACK_WEBHOOK }}
       - name: Update release branch
         run: |
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
           git branch -f release-mgmt HEAD
           git push -f origin release-mgmt
         env:
