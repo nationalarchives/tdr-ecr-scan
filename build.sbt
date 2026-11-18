@@ -1,6 +1,4 @@
-import Dependencies._
-import com.amazonaws.auth.{AWSCredentialsProviderChain, DefaultAWSCredentialsProviderChain}
-import com.amazonaws.auth.profile.ProfileCredentialsProvider
+import Dependencies.*
 
 ThisBuild / scalaVersion     := "2.13.18"
 ThisBuild / version          := "0.1.0-SNAPSHOT"
@@ -25,6 +23,8 @@ lazy val root = (project in file("."))
 resolvers ++= Seq[Resolver](
   "TDR Releases" at "s3://tdr-releases-mgmt"
 )
+
+ThisBuild / dependencyOverrides ++= nettyOverrides
 
 (assembly / assemblyJarName) := "ecr-scan.jar"
 
