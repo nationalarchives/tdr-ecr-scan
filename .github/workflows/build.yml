@@ -12,6 +12,7 @@ jobs:
     uses: nationalarchives/tdr-github-actions/.github/workflows/lambda_build.yml@fc52a93f9636579d7478f01a8a960007134ad30f # v0.0.51
     with:
       lambda-name: ecr-scan
+      java-version: ${{vars.JAVA_RUNTIME}}
       repo-name: tdr-ecr-scan
       artifact-name: ecr-scan
       build-command: |
